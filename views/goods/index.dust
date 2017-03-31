@@ -1,0 +1,91 @@
+{>"layout/master"/}
+{<body}
+<div class="row">
+<div class="row">
+<div class="col-md-12">
+<div class= "col-md-1" id="addgood">
+<h3>+</h3>
+</div><div class="col-md-2">
+<h3><a href="/goods/add">ADD Goods</a></h3>
+</div>
+<div class="save col-md-3" style="float: right"><a href="/goods/save" style="text-decoration: none"> <b>Save</b></a>|<a href="/xlsx" style="text-decoration: none"> <b>View Previous saved</b></a></div>
+</div>
+
+</div>
+<div class="col-lg-12">
+<table class="table table-stripped">
+<thead>
+<tr>
+<th>Product Name</th>
+<th>Manufacturer/Supplier/Category</th>
+<th>Quantity</th>
+<th>Price</th>
+<th></th>
+<th></th>
+
+</tr>
+</thead>
+<tbody class="container">
+{#goods}
+<tr>
+<td>{.productname}</td>
+<td>{.manufacturer}</td>
+<td>{.quantity} {.unit}</td>
+<td>{.price}</td>
+<td> <button type="button" class="btn btn-primary btn-sm dropform" role="button"  data-toggle="modal"
+                   data-target="#{._id}">EDIT</button> </td>
+<td><form action="/goods/delete/{._id}" method="post"><input type="submit" value="Delete" class="btn btn-warning btn-sm" ></form>
+    <!--<a class="btn btn-warning btn-sm removeGood" data-id="{._id}" href="#" >Delete</a> </td>-->
+</tr>
+<!-- Modal -->
+<div class="modal fade" id={._id} tabindex="-1" role="dialog" aria-labelledby="{._id}Label">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="{._id}Label">Edit Goods</h4>
+      </div>
+      <div class="modal-body">
+        <form action="/goods/edit/{._id}" method="post">
+        <div class = "form-group">
+        <label for ="productname">product name</label>
+        <input type="text" name="productname" value="{.productname}">
+        <label for ="manufacturer">manufacturer</label>
+        <select name="manufacturer">
+            <option value="{.manufacturer}" selected>{.manufacturer}</option>
+        {#manufacturers}
+        <option value="{.manufacturer}">{.manufacturer}</option>
+        {/manufacturers}
+        </select>
+        <label for ="quantity">quantity</label>
+        <input type="text" name="quantity" value="{.quantity}">
+        <label for ="unit">unit</label>
+         <!--input type="text" name="unit" value="{.unit}"-->
+         <select name="unit">
+             <option value="{.unit}" selected>{.unit}</option>
+          {#units}
+                   <option value="{.unit}">{.unit}</option>
+          {/units}
+          </select>
+         <label for ="price">price</label>
+         <input type="text" name="price" value="{.price}">
+        </div>
+        <input type="submit" class="btn btn-primary style="margin-top:5px" value="Save Changes">
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+{/goods}
+
+</tbody>
+
+</table>
+</div>
+</div>
+
+{/body}

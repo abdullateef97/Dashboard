@@ -1,0 +1,26 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+.navigation{
+    margin-bottom: 15px;
+}
+a {
+  color: darkolivegreen;
+    text-decoration: none;
+}
+a .hover {
+    color: darkseagreen;
+    text-decoration: none;
+}
+/* .editform{
+    display: none;
+}*/
+ #addgood h3{
+     color: #00B5AD;font-style: oblique;
+
+ }
+ .form-group label{
+     width: 300px;
+ }
+
