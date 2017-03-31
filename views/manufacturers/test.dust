@@ -1,0 +1,106 @@
+<!-- manufacturers-->
+<div class="col-lg-6">
+<h3>MAnufacturers</h3>
+<div class="manu-form">
+<label>Add Supplier</label>
+<input type="text" name="manufacturer">
+<input type="submit" class="btn btn-success" value="Add">
+</div>
+<div class="row">
+<table class="table table-stripped">
+<thead>
+<td>Supplier</td>
+<td>Quantity</td>
+<td></td>
+<td></td>
+</thead>
+<tbody>
+{#manufacturers}
+<tr>
+<td>{.manufacturer}</td>
+<td>70</td>
+<td><button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#manuModal" >Edit</button></td>
+<!-- Edit Manufacturers Modal-->
+<div class="modal fade" id="manuModal" tabindex="-1" role="dialog" aria-labelledby="manuModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="manuModalLabel"> Edit Manufacturers</h4>
+      </div>
+      <div class="modal-body">
+       <label>Edit</label>
+       <input type="text" name="manufacturer" value="{.manufacturer}">
+       <input type="submit" class ="btn btn-primary btn-md" value ="Commit Changes">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--End Edit Manufa Modal-->
+<td><button type="button" class="btn btn-danger btn-md">Delete</button></td>
+</tr>
+{/manufacturers}
+</tbody>
+</table>
+
+</div></div>
+
+<!-- units-->
+<div class="col-lg-6">
+<h3>Units</h3>
+<div class="unit-form">
+<label>Add Units</label>
+<input type="text" name="add-unit">
+<input type="submit" class="btn btn-success" value="unit">
+</div>
+<div class="row">
+<table class="table table-stripped">
+<thead>
+<td>Units</td>
+<td>Quantity</td>
+<td></td>
+<td></td>
+</thead>
+<tbody>
+{#units}
+<tr>
+<td>{.units}</td>
+<td>70</td>
+<td><button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#unitModal">Edit</button></td>
+<!-- Edit units Modal-->
+<div class="modal fade" id="unitModal" tabindex="-1" role="dialog" aria-labelledby="unitModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="unitModalLabel"> Edit Unit</h4>
+      </div>
+      <div class="modal-body">
+       <label>Edit</label>
+       <input type="text" name="unit" value="{.units}">
+       <input type="submit" class ="btn btn-primary btn-md" value ="Commit Changes">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--End Edit units Modal-->
+<td><button type="button" class="btn btn-danger btn-md">Delete</button></td>
+</tr>
+{/units]
+</tbody>
+</table>
+
+</div>
+
+
+</div>
+
+

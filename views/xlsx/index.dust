@@ -1,0 +1,6 @@
+{>"layout/master" /}
+{<body}
+{#xlsx}
+<a href="/xlsx/{._id}" target="_blank">{.date}</a><br/>
+{/xlsx}
+{/body}
