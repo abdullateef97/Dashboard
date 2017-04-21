@@ -32,13 +32,14 @@ router.get('/', function(req, res, next) {
                             res.render('goods/index', {
                                 goods:goods,manufacturers:manufacturers,units:units
                             })
+                          // res.send(goods)
                         }
                     })
                 }
             })
 
         }
-    })
+    }).sort({$natural : -1})
     ;
 });
 router.get('/add',(req,res,next) =>{
@@ -65,6 +66,7 @@ router.post('/add',(req,res,next)=>{
     var quantity = req.body.quantity;
     var unit = req.body.unit;
     var price = req.body.price;
+    console.log(manufacturer);
     var newGoods = new Goods({
        productname : productname,manufacturer : manufacturer,quantity:quantity,unit: unit,price:price
     });
@@ -179,13 +181,20 @@ router.post('/delete/:id',(req,res,next)=>{
 //
 // })
 
-router.post('/search',(req,res,next)=>{
+/*router.post('/search',(req,res,next)=>{
     var search = req.body.search;
     Goods.find({"manufacturer":search},(err,goods)=>{
         if(err){
             res.send("terminated before it got to goods");
         }
         else{
+            /!*Goods.find({"productname":search},(err,manu)=>{
+                if(err){
+                    res.send("terminated after goods but before manu")
+                }
+                else{
+                    goods.push(manu);*!/
+
                     Manufacturers.find({},(err,manufacturers)=>{
                         if(err){
                             console.log("couldnt ge t d manu")
@@ -204,10 +213,41 @@ router.post('/search',(req,res,next)=>{
                         }
                     })
 
-            }
-
+            /!*})*!/
+        }
     })
-});
+});*/
+
+router.post('/search',(req,res,next)=>{
+    var search = req.body.search;
+    console.log(search)
+   // Goods.createIndex({"productname" : "text","manufacturer":"text"});
+    Goods.find({$text : {$search : search}},(err,goods)=>{
+       if(err){
+           res.send(err)
+       }
+       else{
+           Manufacturers.find({},(err,manufacturers)=>{
+               if(err){
+                   console.log("couldnt ge t d manu")
+               }
+               else{
+                   Units.find({},(err,units)=>{
+                       if(err){
+                           console.log("couldnt get units")
+                       }
+                       else{
+                           res.render('goods/index', {
+                               goods:goods,manufacturers:manufacturers,units:units
+                           })
+                           // res.send(goods)
+                       }
+                   })
+               }
+           })
+       }
+    })
+})
 router.get('/save',(req,res,next)=> {
     Goods.find({}, (err, goods) => {
         if (err) {
