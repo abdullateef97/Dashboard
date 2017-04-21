@@ -32,23 +32,18 @@ router.get('/', function(req, res, next) {
                             res.render('goods/index', {
                                 goods:goods,manufacturers:manufacturers,units:units
                             })
-<<<<<<< HEAD
-                          // res.send(goods)
-=======
->>>>>>> 6789d06eb46a7a4426576d8b656361cdf658df33
+                         // res.send(goods)
                         }
                     })
                 }
             })
 
         }
-<<<<<<< HEAD
+
     }).sort({$natural : -1})
-=======
+
     })
->>>>>>> 6789d06eb46a7a4426576d8b656361cdf658df33
-    ;
-});
+
 router.get('/add',(req,res,next) =>{
     Manufacturers.find({},(err,manufacturers)=>{
         if(err){
@@ -73,10 +68,8 @@ router.post('/add',(req,res,next)=>{
     var quantity = req.body.quantity;
     var unit = req.body.unit;
     var price = req.body.price;
-<<<<<<< HEAD
+
     console.log(manufacturer);
-=======
->>>>>>> 6789d06eb46a7a4426576d8b656361cdf658df33
     var newGoods = new Goods({
        productname : productname,manufacturer : manufacturer,quantity:quantity,unit: unit,price:price
     });
@@ -90,36 +83,7 @@ router.post('/add',(req,res,next)=>{
     })
 
 });
-// router.get('/edit/:id',(req,res,next)=>{
-//     Goods.findOne({
-//         _id : req.params.id
-//     })
-//         .exec((err,good)=>{
-//         if(err){
-//             console.log("couldnt find book")
-//         }
-//         else {
-//             Manufacturers.find({},(err,manufacturers)=>{
-//                 if(err){
-//                     console.log("couldnt ge t d manu")
-//                 }
-//                 else{
-//                     Units.find({},(err,units)=>{
-//                         if(err){
-//                             console.log("couldnt get units")
-//                         }
-//                         else{
-//                             res.render('goods/edit', {
-//                                 good:good,manufacturers:manufacturers,units:units
-//                             })
-//                         }
-//                     })
-//                 }
-//             })
-//
-//         } })
-//
-// });
+
 router.post('/edit/:id',(req,res,next)=>{
     var productname = req.body.productname;
     var manufacturer = req.body.manufacturer;
@@ -156,87 +120,45 @@ router.post('/delete/:id',(req,res,next)=>{
         }
     })
 })
-//search function
-// router.post('/search',(req,res,next)=>{
-//     var search = req.body.search;
-//     Goods.find({/*"productname": search,"manufacturer":search,"unit" : search*/
-//                     // $or:[{"productname" : search},{"manufacturer" : search}]},
-//     function (err,goods) {
-//         if(err){
-//             res.send("search failed")
-//         }
-//         else{
-//
-//
-//                 }
-//             })
-//             // Manufacturers.find({},(err,manufacturers)=>{
-//             //     if(err){
-//             //         console.log("couldnt ge t d manu")
-//             //     }
-//             //     else{
-//             //         Units.find({},(err,units)=>{
-//             //             if(err){
-//             //                 console.log("couldnt get units")
-//             //             }
-//             //             else{
-//             //                 res.render('goods/index', {
-//             //                     goods:goods,manufacturers:manufacturers,units:units
-//             //                 })
-//             //             }
-//             //         })
-//             //     }
-//             // })
-//
-//
-// })
 
-<<<<<<< HEAD
-/*router.post('/search',(req,res,next)=>{
-=======
 router.post('/search',(req,res,next)=>{
->>>>>>> 6789d06eb46a7a4426576d8b656361cdf658df33
     var search = req.body.search;
-    Goods.find({"manufacturer":search},(err,goods)=>{
+    console.log(typeof search)
+    Goods.find({},(err,fullgoods)=>{
         if(err){
-            res.send("terminated before it got to goods");
+            res.send(err)
         }
         else{
-<<<<<<< HEAD
-            /!*Goods.find({"productname":search},(err,manu)=>{
+
+            var goods = fullgoods.filter((good)=>{
+                return good.productname === search || good.manufacturer === search || good.price === parseInt(search) ||
+                                        good.unit === search || good.quantity === parseInt(search)
+            })
+            Manufacturers.find({},(err,manufacturers)=>{
                 if(err){
-                    res.send("terminated after goods but before manu")
+                    console.log("couldnt ge t d manu")
                 }
                 else{
-                    goods.push(manu);*!/
-
-=======
->>>>>>> 6789d06eb46a7a4426576d8b656361cdf658df33
-                    Manufacturers.find({},(err,manufacturers)=>{
+                    Units.find({},(err,units)=>{
                         if(err){
-                            console.log("couldnt ge t d manu")
+                            console.log("couldnt get units")
                         }
                         else{
-                            Units.find({},(err,units)=>{
-                                if(err){
-                                    console.log("couldnt get units")
-                                }
-                                else{
-                                    res.render('goods/index', {
-                                        goods:goods,manufacturers:manufacturers,units:units
-                                    })
-                                }
+                            res.render('goods/index', {
+                                goods:goods,manufacturers:manufacturers,units:units
                             })
+                            // res.send(goods)
                         }
                     })
+                }
+            })
 
-<<<<<<< HEAD
-            /!*})*!/
         }
     })
-});*/
+})
 
-router.post('/search',(req,res,next)=>{
+// search fn using mongodb text search
+/*router.post('/search',(req,res,next)=>{
     var search = req.body.search;
     console.log(search)
    // Goods.createIndex({"productname" : "text","manufacturer":"text"});
@@ -265,13 +187,9 @@ router.post('/search',(req,res,next)=>{
            })
        }
     })
-})
-=======
-            }
+})*/
 
-    })
-});
->>>>>>> 6789d06eb46a7a4426576d8b656361cdf658df33
+
 router.get('/save',(req,res,next)=> {
     Goods.find({}, (err, goods) => {
         if (err) {
@@ -304,16 +222,6 @@ router.get('/save',(req,res,next)=> {
 })
 
 
-/*router.get('/print',function(req,res,next){
-    Goods.find({},function (err,goods) {
-        if(err){
-            console.log("fuck")
-        }
-        else{
-
-        }
-    })
-})*/
 
 
 
