@@ -32,14 +32,21 @@ router.get('/', function(req, res, next) {
                             res.render('goods/index', {
                                 goods:goods,manufacturers:manufacturers,units:units
                             })
+<<<<<<< HEAD
                           // res.send(goods)
+=======
+>>>>>>> 6789d06eb46a7a4426576d8b656361cdf658df33
                         }
                     })
                 }
             })
 
         }
+<<<<<<< HEAD
     }).sort({$natural : -1})
+=======
+    })
+>>>>>>> 6789d06eb46a7a4426576d8b656361cdf658df33
     ;
 });
 router.get('/add',(req,res,next) =>{
@@ -66,7 +73,10 @@ router.post('/add',(req,res,next)=>{
     var quantity = req.body.quantity;
     var unit = req.body.unit;
     var price = req.body.price;
+<<<<<<< HEAD
     console.log(manufacturer);
+=======
+>>>>>>> 6789d06eb46a7a4426576d8b656361cdf658df33
     var newGoods = new Goods({
        productname : productname,manufacturer : manufacturer,quantity:quantity,unit: unit,price:price
     });
@@ -181,13 +191,18 @@ router.post('/delete/:id',(req,res,next)=>{
 //
 // })
 
+<<<<<<< HEAD
 /*router.post('/search',(req,res,next)=>{
+=======
+router.post('/search',(req,res,next)=>{
+>>>>>>> 6789d06eb46a7a4426576d8b656361cdf658df33
     var search = req.body.search;
     Goods.find({"manufacturer":search},(err,goods)=>{
         if(err){
             res.send("terminated before it got to goods");
         }
         else{
+<<<<<<< HEAD
             /!*Goods.find({"productname":search},(err,manu)=>{
                 if(err){
                     res.send("terminated after goods but before manu")
@@ -195,6 +210,8 @@ router.post('/delete/:id',(req,res,next)=>{
                 else{
                     goods.push(manu);*!/
 
+=======
+>>>>>>> 6789d06eb46a7a4426576d8b656361cdf658df33
                     Manufacturers.find({},(err,manufacturers)=>{
                         if(err){
                             console.log("couldnt ge t d manu")
@@ -213,6 +230,7 @@ router.post('/delete/:id',(req,res,next)=>{
                         }
                     })
 
+<<<<<<< HEAD
             /!*})*!/
         }
     })
@@ -248,6 +266,12 @@ router.post('/search',(req,res,next)=>{
        }
     })
 })
+=======
+            }
+
+    })
+});
+>>>>>>> 6789d06eb46a7a4426576d8b656361cdf658df33
 router.get('/save',(req,res,next)=> {
     Goods.find({}, (err, goods) => {
         if (err) {

@@ -7,7 +7,11 @@
 6 silly lifecycle dashboard@0.0.0~prestart: no script for prestart, continuing
 7 info lifecycle dashboard@0.0.0~start: dashboard@0.0.0
 8 verbose lifecycle dashboard@0.0.0~start: unsafe-perm in lifecycle true
+<<<<<<< HEAD
 9 verbose lifecycle dashboard@0.0.0~start: PATH: /usr/share/npm/bin/node-gyp-bin:/home/belle/WebstormProjects/untitled/Dashboard/node_modules/.bin:/home/belle/anaconda3/bin:/home/belle/anaconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin
+=======
+9 verbose lifecycle dashboard@0.0.0~start: PATH: /usr/share/npm/bin/node-gyp-bin:/home/belle/WebstormProjects/untitled/Dashboard/node_modules/.bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin
+>>>>>>> 6789d06eb46a7a4426576d8b656361cdf658df33
 10 verbose lifecycle dashboard@0.0.0~start: CWD: /home/belle/WebstormProjects/untitled/Dashboard
 11 silly lifecycle dashboard@0.0.0~start: Args: [ '-c', 'node ./bin/www' ]
 12 silly lifecycle dashboard@0.0.0~start: Returned: code: 1  signal: null
@@ -24,7 +28,11 @@
 14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:211:5)
 15 verbose pkgid dashboard@0.0.0
 16 verbose cwd /home/belle/WebstormProjects/untitled/Dashboard
+<<<<<<< HEAD
 17 error Linux 4.4.0-72-generic
+=======
+17 error Linux 4.4.0-66-generic
+>>>>>>> 6789d06eb46a7a4426576d8b656361cdf658df33
 18 error argv "/usr/bin/nodejs" "/usr/bin/npm" "start"
 19 error node v4.2.6
 20 error npm  v3.5.2
