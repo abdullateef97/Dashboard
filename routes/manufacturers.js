@@ -9,59 +9,13 @@ var Goods = require('../model/goodModel')
 var Manufacturers = require('../model/manufacturerModel');
 var Units = require('../model/unitModel');
 
-// router.get('/add',(req,res,next)=>{
-//     Manufacturers.find({},(err,manufacturers)=>{
-//         if(err){
-//             res.send('couldnt get manufacturers')
-//         }
-//         else{
-//             Units.find({},(err,units)=>{
-//                 if(err){
-//                     res.send('couldnt get units')
-//                 }
-//                 else {
-//                    /* res.send({manufacturers,units});*/
-//                     // res.render('manufacturers/manu-index');
-//                     res.render('manufacturers/add',{manufacturers:manufacturers,units:units})
-//                 }
-//             })
-//         }
-//     })
-//
-// });
+
 router.get('/',(req,res,next) =>{
     Manufacturers.find({},(err,manufacturers)=>{
         if(err){
             res.send('couldnt find manufacturers')
         }
         else{
-            // for(manuf in manufacturers){
-            //     console.log(manufacturers[manuf].manufacturer)
-            //     Goods.find({"manufacturer":manufacturers[manuf].manufacturer},function (err,man) {
-            //         if(err){
-            //             res.send("couldnt count")
-            //         }
-            //         else{
-            //             let count=0;
-            //             for(m in man){
-            //                 count++
-            //             }
-            //             console.log(manufacturers[manuf].manufacturer)
-            //             console.log(count)
-            //             var quantity = count;
-            //             Manufacturers.update({manufacturer : manufacturers[manuf].manufacturer}
-            //             ,{
-            //                 quantity : quantity
-            //                 },
-            //                 (err)=>{
-            //                 if(err){
-            //                     console.log("count failed")
-            //                 }
-            //                 })
-            //
-            //         }
-            //     })
-            // }
             manufacturers.forEach(function (manu) {
                 Goods.find({"manufacturer":manu.manufacturer},
                     function (err,man) {
@@ -165,16 +119,17 @@ router.post('/add',(req,res,next)=>{
             })
         }
     })
-   /* var newManu = new Manufacturers({
-        manufacturer : manufacturer
-    })
-    newManu.save((err)=>{
+
+})
+router.post('/delete/:id',(req,res,next)=>{
+    Manufacturers.remove({_id:req.params.id},(err)=>{
         if(err){
-            res.send('couldnt add manu')
+            res.send('couldnt delete')
         }
         else{
+            res.location('/manufacturers')
             res.redirect('/manufacturers')
         }
-    })*/
+    })
 })
 module.exports= router;

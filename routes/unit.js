@@ -7,25 +7,6 @@ var Manufacturers = require('../model/manufacturerModel')
 var Units = require('../model/unitModel');
 
 
-// router.get('/',function(req,res,next){
-//     Manufacturers.find({},function (err,manufacturers) {
-//         if(err){
-//             res.send("error getting manus")
-//         }
-//         else {
-//             Units.find({},(err,units)=>{
-//                 if(err){
-//                     res.send("error getting units")
-//                 }
-//                 else{
-//                     res.render('manufacturers/indexx',{manufacturers:manufacturers,units:units})
-//                 }
-//             })
-//
-//         }
-//     })
-// })
-
 router.post('/add',(req,res,next)=>{
     var un = req.body.unit;
     Units.findOne({'unit':un},function (err,unit) {
@@ -51,7 +32,17 @@ router.post('/add',(req,res,next)=>{
     })
 
 })
-
+router.post('/delete/:id',(req,res,next)=>{
+    Units.remove({_id:req.params.id},(err)=>{
+        if(err){
+            res.send('couldnt delete')
+        }
+        else{
+            res.location('/manufacturers')
+            res.redirect('/manufacturers')
+        }
+    })
+})
 
 
 module.exports = router;

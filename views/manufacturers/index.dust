@@ -48,7 +48,10 @@
 </div>
 
 <!--End Edit Manufa Modal-->
-<td><button type="button" class="btn btn-danger btn-md">Delete</button></td>
+<td><form action="/manufacturers/delete/{._id}" method="post">
+    <input type="submit" value="Delete" class="btn btn-danger btn-md">
+    </form></td>
+
 </tr>
 {/manufacturers}
 </tbody>
@@ -101,7 +104,9 @@
 </div>
 
 <!--End Edit units Modal-->
-<td><button type="button" class="btn btn-danger btn-md">Delete</button></td>
+    <td><form action="/unit/delete/{._id}" method="post">
+            <input type="submit" value="Delete" class="btn btn-danger btn-md">
+        </form></td>
 </tr>
 {/units}
 </tbody>
